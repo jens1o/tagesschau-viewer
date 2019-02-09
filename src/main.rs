@@ -27,7 +27,7 @@ impl fmt::Display for EpisodeType {
 }
 
 impl EpisodeType {
-    fn get_url(&self) -> String {
+    fn get_channel_url(&self) -> String {
         format!("{}{}{}", BASE_URL, self.to_string(), SUFFIX_URL)
     }
 }
@@ -46,7 +46,7 @@ fn main() -> Result<(), rss::Error> {
 
     println!("Playing latest {} episode.", episode_type.to_string());
 
-    let channel = rss::Channel::from_url(&episode_type.get_url())?;
+    let channel = rss::Channel::from_url(&episode_type.get_channel_url())?;
 
     let video_url = channel
         .items()
@@ -63,9 +63,9 @@ fn main() -> Result<(), rss::Error> {
     if exit_code != 0 {
         eprintln!();
         eprintln!("vlc didn't finished with non-zero error code!");
+    } else {
+        println!("Finished. Bye…");
     }
-
-    println!("Finished. Bye…");
 
     Ok(())
 }
