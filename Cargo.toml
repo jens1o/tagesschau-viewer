@@ -3,6 +3,7 @@ name = "tagesschau-viewer"
 version = "0.1.0"
 authors = ["Jens Hausdorf <mail@jens-hausdorf.de>"]
 edition = "2018"
+license = "GPLv3"
 
 [dependencies]
 rss = { version = "1.6.1", features = ["from_url"] }
